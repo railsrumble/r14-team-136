@@ -1,0 +1,11 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*
+*= require_self
+*= require surge/bootstrap
+*= require surge/font-awesome
+*= require surge/li_style
+*= require surge/style
+*= require surge/style-responsive
+*/
