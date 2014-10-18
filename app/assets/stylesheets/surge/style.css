@@ -225,6 +225,9 @@ ul.top-menu > li > .logout {
 	margin-top: 15px;
 }
 
+.main-area {
+background: url(/assets/surge/graphy.png);
+}
 
 /*sidebar navigation*/
 
