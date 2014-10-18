@@ -239,7 +239,17 @@ ul.top-menu > li > .logout {
 right: 0px;
 width: 300px;
 top: 50px;
-height: 89%;
+height: 100%;
+padding-bottom: 50px;
+}
+
+.bottom-zoom {
+padding-left: 197px;
+padding-right: 305px;
+position: fixed;
+bottom: 0px;
+left: 0px;
+width: 100%;
 }
 
 
@@ -1907,6 +1917,15 @@ label {
     transition: 0.25s ease-out;
     -webkit-backface-visibility: hidden;
 }
+
+.label.sti {
+float: right;
+padding: 4px;
+margin-right: 10px;
+font-family: courier;
+}
+
+
 .switch-square {
     border-radius: 6px;
     -webkit-border-radius: 6px;

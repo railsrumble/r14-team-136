@@ -5,5 +5,8 @@
 //= require surge/jquery-1.8.3.min
 //= require surge/bootstrap.min
 //= require surge/jquery.dcjqaccordion.2.7
+//= require surge/jquery.scrollTo.min
+//= require surge/jquery.mousewheel
+//= require surge/jquery.panzoom
 //= require surge/common-scripts
 
