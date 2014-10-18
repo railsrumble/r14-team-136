@@ -14,3 +14,5 @@ gemspec
 # gem 'debugger'
 gem 'pg'
 gem 'uglifier'
+
+gem "sqlite3", :group => :development
