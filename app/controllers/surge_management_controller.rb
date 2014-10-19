@@ -54,7 +54,7 @@ class SurgeManagementController < ApplicationController
     system("rails destroy model #{params[:model_name]}")
     redirect_to :back
   end
-  
+
   def generate_migrations
     rafeeq
   end
@@ -79,15 +79,6 @@ class SurgeManagementController < ApplicationController
       FileUtils.cp_r Rails.root.to_s + "/db/migrate",  Rails.root.to_s + "/tmp/#{request.session_options[:id]}/migrate"
 
     end
-<<<<<<< HEAD
-    #else
-
-    #end
-=======
-  #else
-
-  #end
->>>>>>> 1d7b537f0a796ea644367e233a6d76fa0e0d91cf
   end
 
   def add_sub_class(klass,repete)
