@@ -34,6 +34,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (3.4.2)
+      activerecord (>= 3.2, < 5)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     erubis (2.7.0)
@@ -95,6 +97,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 3.4)
   pg
   sqlite3
   surge!
