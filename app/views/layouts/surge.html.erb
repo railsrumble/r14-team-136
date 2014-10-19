@@ -109,6 +109,7 @@
 			<aside>
 				<div id="sidebar"  class="nav-collapse right">
 					<div class="ds">
+						<%= form_tag "" do %>
 						<div class="with_model" style="display: none;">
 
 							<% @all_classes.each do |k,v| %>
@@ -132,10 +133,10 @@
 							<% end %>
 
 							<div class="edit_form new_model_form" ">
-								<%= render "surge_management/new_model"%>
+							<%= render "surge_management/new_model"%>
 							</div>
 							<div class="edit_form drop_model_form" >
-								<%= render "surge_management/drop_model"%>
+							<%= render "surge_management/drop_model"%>
 							</div>
 							<div class="edit_form new_table_form" ">
 								<%= render "surge_management/new_table"%>
@@ -146,11 +147,12 @@
 
 							<div class="desc">
 								<div class="details">
-									<p></p>
+									<p><%= submit_tag %></p>
 								</div>
 							</div>
 
 						</div>
+						<% end %>
 						<div class="without_model" style="display: block;">
 							<!--COMPLETED ACTIONS DONUTS CHART-->
 							<h3>No Model Selected</h3>

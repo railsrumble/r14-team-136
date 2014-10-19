@@ -32,6 +32,9 @@ class SurgeManagementController < ApplicationController
     system("rails destroy model #{params[:model_name]}")
     redirect_to :back
   end
+  def generate_migrations
+    rafeeq
+  end
 
   private
 
