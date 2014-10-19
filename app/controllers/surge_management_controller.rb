@@ -8,6 +8,7 @@ class SurgeManagementController < ApplicationController
 
   before_action :set_folder_paths
   def index
+    @all_tables = ActiveRecord::Base.connection.tables
     @all_classes = {}
 
     Rails.application.eager_load!
@@ -15,7 +16,7 @@ class SurgeManagementController < ApplicationController
     p  @ar_decendants
     @ar_decendants.each do |klass|
       @all_classes[klass.to_s.classify.split("::").join(" ").split("HABTM").sort.each{|x| x.strip!}] = klass.descendants.collect{|x| x.to_s.classify.split("::").join(" ").split("HABTM").each{|x| x.strip!} }
-    end 
+    end
     @ar_decendants
 
     @tree = []
@@ -27,7 +28,7 @@ class SurgeManagementController < ApplicationController
       @tree << add_sub_class(k, [])
 
     end
-     
+
     p @tree
 
     @tree.each do |node|
@@ -48,15 +49,14 @@ class SurgeManagementController < ApplicationController
         cols_string += "#{col[:column_name]}:#{col[:data_type]} "
       end
       system("rails generate model #{params[:new_model][:model_name]} #{cols_string}")
-      #Rails.application.class.load_tasks
-      #Rake::Task['db:migrate'].invoke
+    #Rails.application.class.load_tasks
+    #Rake::Task['db:migrate'].invoke
     end
     redirect_to :back
   end
 
   def generate_migrations
-    
-    
+
     all_params = []
     if params[:add_column] && params[:add_column][:column_data]
       p "11111111111"
@@ -78,14 +78,14 @@ class SurgeManagementController < ApplicationController
       remove_column[:table_name] = params[:remove_column][:table_name].constantize.table_name
       remove_column[:column_name] = params[:remove_column][:column_name]
       remove_column[:data_type] = params[:remove_column][:table_name].constantize.columns.select{|c| c.name==params[:remove_column][:column_name]}.first.type
-      all_params << remove_column
+    all_params << remove_column
     end
-    
+
     if params[:rename_table] && params[:rename_table][:new_table_name] != ''
       p "333333333333333"
       all_params <<  {:action => "rename_table" , :table_data => {:old_table_name => params[:rename_table][:old_table_name].constantize.table_name , :new_table_name => params[:rename_table][:new_table_name]}}
     end
-    
+
     if params[:rename_column] && params[:rename_column][:old_column_name] != "" && params[:rename_column][:new_column_name] != ""
       p "4444444444444444444"
       all_params << {:action => "rename_column" , :table_name => params[:rename_column][:table_name].constantize.table_name, :old_column_name => params[:rename_column][:old_column_name] ,:new_column_name => params[:rename_column][:new_column_name]}
@@ -101,6 +101,27 @@ class SurgeManagementController < ApplicationController
   def get_columns
     p "In get_columns s\action of controller"
     render :json => params["table_name"].constantize.columns.collect{|c| c.name}
+  end
+
+  def create_table
+    if params[:new_table] && params[:new_table][:table_name] != ""
+      column_data = []
+      params[:new_table][:column_data].each do |i,val|
+        if val[:column_name] != "" && val[:column_name] != nil && val[:datatype] != "" && val[:datatype] != nil
+          column_data << {:column_name => val[:column_name] , :datatype => val[:data_type], :limit => val[:limit], :null => val[:null], :default => vla[:default]}
+        end
+        create_migration_file([{:action => "create_table" , :table_name => params[:new_table][:table_name].constantize.table_name , :column_data => column_data }])
+      end
+    end
+
+    redirect_to :back
+  end
+
+  def drop_table
+    if params[:table_name]
+      create_migration_file([{:action => "drop_table" , :table_name => params[:table_name] ,:method_up => "up" , :method_down => "down"}])
+    end
+    redirect_to :back
   end
 
   private
@@ -122,26 +143,22 @@ class SurgeManagementController < ApplicationController
   end
 
   def add_sub_class(klass,repeat)
- 
-
 
     result = []
 
     ref = klass.reflections
 
- 
-
     if ref.blank? || repeat.include?(klass)
 
-    else
+      else
 
       repeat << klass
-  
-      ref.each do |c,rel|
-  next if rel.macro == :belongs_to
 
-    result << add_sub_class(rel.name.to_s.classify.constantize,repeat) 
- 
+      ref.each do |c,rel|
+        next if rel.macro == :belongs_to
+
+        result << add_sub_class(rel.name.to_s.classify.constantize,repeat)
+
       end
 
     end
