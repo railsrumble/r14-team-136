@@ -41,23 +41,26 @@ class SurgeManagementController < ApplicationController
   end
 
   def create_model
-    cols_string = ""
-    params[:new_model][:column_data].each do|i,col|
-      cols_string += "#{col[:column_name]}:#{col[:data_type]} "
+
+    if params[:new_model] && params[:new_model][:model_name]
+      cols_string = ""
+      params[:new_model][:column_data].each do|i,col|
+        cols_string += "#{col[:column_name]}:#{col[:data_type]} "
+      end
+      system("rails generate model #{params[:new_model][:model_name]} #{cols_string}")
+      Rails.application.class.load_tasks
+      Rake::Task['db:migrate'].invoke
     end
-    system("rails generate model #{params[:new_model][:model_name]} #{cols_string}")
-    Rails.application.class.load_tasks
-    Rake::Task['db:migrate'].invoke
-    redirect_to :back
-  end
-  def drop_model
-    system("rails destroy model #{params[:model_name]}")
     redirect_to :back
   end
 
   def generate_migrations
-    rafeeq
+    if params[:drop_model]
+      system("rails destroy model #{params[:drop_model][:model_name]}")
+    end
+    redirect_to :back
   end
+
   def get_columns
     p "In get_columns s\action of controller"
     render :json => params["table_name"].constantize.columns.collect{|c| c.name}
