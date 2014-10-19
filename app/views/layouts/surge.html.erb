@@ -94,17 +94,9 @@
 								<button type="button" class="btn btn-default new_table_button ">
 									<i class="fa fa-repeat"></i> New Table &nbsp;&nbsp;
 								</button>
-								<button type="button" class="btn btn-default drop_table_button ">
-									<i class="fa fa-repeat"></i> Drop Table &nbsp;&nbsp;
-								</button>
 								
-								<button type="button" class="btn btn-default rename_table_button ">
-									<i class="fa fa-repeat"></i> Rename Table &nbsp;&nbsp;
-								</button>
 								
-								<button type="button" class="btn btn-default rename_column_button ">
-									<i class="fa fa-repeat"></i> Rename Column &nbsp;&nbsp;
-								</button>
+								
 
 							</div>
 						</div>
@@ -140,18 +132,16 @@
 							<% end %>
 
 							<div class="edit_form new_model_form" ">
-								<%= render "surge_management/new_form"%>
+								<%= render "surge_management/new_model"%>
 							</div>
 							<div class="edit_form drop_model_form" >
+								<%= render "surge_management/drop_model"%>
+							</div>
+							<div class="edit_form new_table_form" ">
+								<%= render "surge_management/new_table"%>
+							</div>
+							<div class="edit_form drop_table_form" >
 								<%= render "surge_management/drop_table"%>
-							</div>
-							
-							<div class="edit_form rename_table_form" >
-								<%= render "surge_management/rename_table"%>
-							</div>
-							
-							<div class="edit_form rename_column_form" >
-								<%= render "surge_management/rename_column"%>
 							</div>
 
 							<div class="desc">
