@@ -2,12 +2,10 @@
 
 one:
   name: MyString
-  email: MyString
-  age: 1
-  gender: MyString
+  content: MyText
+  user_id: 
 
 two:
   name: MyString
-  email: MyString
-  age: 1
-  gender: MyString
+  content: MyText
+  user_id: 
