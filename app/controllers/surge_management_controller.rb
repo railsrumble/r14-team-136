@@ -59,11 +59,12 @@ class SurgeManagementController < ApplicationController
     
     all_params = []
     if params[:add_column] && params[:add_column][:column_data]
+      p "11111111111"
       params[:add_column][:column_data].each do |i,cdata|
         if cdata[:column_name]
           add_column = {}
           add_column[:action] = "add_column"
-          add_column[:table_name] = params[:add_column][:table_name]
+          add_column[:table_name] = params[:add_column][:table_name].constantize.table_name
           add_column[:column_name] = cdata[:column_name]
           add_column[:datatype] = cdata[:data_type]
         all_params << add_column
@@ -71,26 +72,27 @@ class SurgeManagementController < ApplicationController
       end
     end
     if params[:remove_column] && params[:remove_column][:column_name] != ""
+      p "2222222222222222"
       remove_column = {}
       remove_column[:action] = "remove_column"
-      remove_column[:table_name] = params[:remove_column][:table_name]
+      remove_column[:table_name] = params[:remove_column][:table_name].constantize.table_name
       remove_column[:column_name] = params[:remove_column][:column_name]
       remove_column[:data_type] = params[:remove_column][:table_name].constantize.columns.select{|c| c.name==params[:remove_column][:column_name]}.first.type
       all_params << remove_column
     end
     
     if params[:rename_table] && params[:rename_table][:new_table_name] != ''
-      all_params <<  {:action => "rename_table" , :table_data => {:old_table_name => params[:rename_table][:old_table_name] , :new_table_name => params[:rename_table][:new_table_name]}}
+      p "333333333333333"
+      all_params <<  {:action => "rename_table" , :table_data => {:old_table_name => params[:rename_table][:old_table_name].constantize.table_name , :new_table_name => params[:rename_table][:new_table_name]}}
     end
     
     if params[:rename_column] && params[:rename_column][:old_column_name] != "" && params[:rename_column][:new_column_name] != ""
-      all_params << {:action => "rename_column" , :table_name => params[:rename_column][:table_name], :old_column_name => params[:rename_column][:old_column_name] ,:new_column_name => params[:rename_column][:new_column_name]}
+      p "4444444444444444444"
+      all_params << {:action => "rename_column" , :table_name => params[:rename_column][:table_name].constantize.table_name, :old_column_name => params[:rename_column][:old_column_name] ,:new_column_name => params[:rename_column][:new_column_name]}
     end
-    
-    rafeeq
     create_migration_file(all_params)
-    
-    if params[:drop_model]
+    if params[:drop_model][:drop_model]
+      p "555555555555555555555"
       system("rails destroy model #{params[:drop_model][:model_name]}")
     end
     redirect_to :back
@@ -138,8 +140,6 @@ class SurgeManagementController < ApplicationController
       ref.each do |c,rel|
   next if rel.macro == :belongs_to
 
-  p "#{rel.active_record} running"
-  p rel
     result << add_sub_class(rel.name.to_s.classify.constantize,repeat) 
  
       end
