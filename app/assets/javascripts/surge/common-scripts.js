@@ -129,4 +129,16 @@ var Script = function () {
     });
      });
 
+
+
+  //Right form handler
+
+  $(".sidebar-menu.left li").click(function() {
+    $(".without_model").hide();
+    $(".with_model").fadeIn("fast");
+    obj_id = parseInt($(this).find("a").first().attr("class").replace(/active/gi, ""));
+    console.log(obj_id);
+
+  });
+
   }();

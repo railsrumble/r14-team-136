@@ -34,26 +34,30 @@
       <aside>
           <div id="sidebar"  class="nav-collapse ">
               <!-- sidebar menu start-->
-              <ul class="sidebar-menu" id="nav-accordion">
+              <ul class="sidebar-menu left" id="nav-accordion">
 
 
-                  <li class="mt">
-		      <h5 class="centered">Classes</h5>
-                      <a class="active" href="#">
-			<span>Dashboard</span>
-			<span class="label label-warning sti">S T I</span>
+		  <h5 class="centered">Models</h5>
+
+		  <br />
+		  <% @all_classes.each do |k,v| %>
+		  <li class="sub-menu">
+		  <a class="<%= k.object_id %>" href="#">
+			<span><%= (k)[0] + " " + (k)[1].to_s %></span>
+			<% unless (k)[1].blank? %>
+			<span class="label label-default sti">H A B T M</span>
+			<% end %>
+			<% unless v.blank? %>
+			  <span class="label label-warning sti">S T I</span>
+			  <ul class="sub">
+			    <% v.each do |s| %>
+			      <li><a  href="#"><%= (s)[0]  %></a></li>
+			    <% end %>
+			  </ul>
+			<% end %>
                       </a>
                   </li>
-
-                  <li class="sub-menu">
-                      <a href="javascript:;" >
-                          <span>Charts</span>
-                      </a>
-                      <ul class="sub">
-                          <li><a  href="#">Morris</a></li>
-                          <li><a  href="#">Chartjs</a></li>
-                      </ul>
-                  </li>
+		  <% end %>
 
               </ul>
               <!-- sidebar menu end-->
@@ -89,123 +93,52 @@
       <!--right sidebar start-->
       <aside>
           <div id="sidebar"  class="nav-collapse right">
-	<div class="ds">
+	    <div class="ds">
+	           <div class="with_model" style="display: none;">
+
+	 	<% @all_classes.each do |k,v| %>
+		  <div class="edit_form <%= k.object_id %>">
+		     <h3><%= (k)[0] + " " + (k)[1].to_s %></h3>
+			<span><%= (k)[0] + " " + (k)[1].to_s %></span>
+			<% unless (k)[1].blank? %>
+			<span class="label label-default sti">H A B T M</span>
+			<% end %>
+			<% unless v.blank? %>
+			  <span class="label label-warning sti">S T I</span>
+			  <ul class="sub">
+			    <% v.each do |s| %>
+			      <li><a  href="#"><%= (s)[0]  %></a></li>
+			    <% end %>
+			  </ul>
+			<% end %>
+                      </a>
+                  </li>
+		  <% end %>
+
+
+                      <div class="desc">
+                      	<div class="details">
+                          <p>
+                      	  </p>
+                      	</div>
+		      </div>
+
+		   </div>
+		  <div class="without_model" style="display: block;">
                     <!--COMPLETED ACTIONS DONUTS CHART-->
-						<h3>NOTIFICATIONS</h3>
+						<h3>No Model Selected</h3>
 
                       <!-- First Action -->
                       <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
                       	<div class="details">
-                      		<p><muted>2 Minutes Ago</muted><br/>
-                      		   <a href="#">James Brown</a> subscribed to your newsletter.<br/>
-                      		</p>
+			  <p style="text-align: center;">Please choose a model from the left tab to start editing
+                          </p>
                       	</div>
-                      </div>
-                      <!-- Second Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>3 Hours Ago</muted><br/>
-                      		   <a href="#">Diana Kennedy</a> purchased a year subscription.<br/>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Third Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>7 Hours Ago</muted><br/>
-                      		   <a href="#">Brandon Page</a> purchased a year subscription.<br/>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fourth Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>11 Hours Ago</muted><br/>
-                      		   <a href="#">Mark Twain</a> commented your post.<br/>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fifth Action -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<span class="badge bg-theme"><i class="fa fa-clock-o"></i></span>
-                      	</div>
-                      	<div class="details">
-                      		<p><muted>18 Hours Ago</muted><br/>
-                      		   <a href="#">Daniel Pratt</a> purchased a wallet in your store.<br/>
-                      		</p>
-                      	</div>
-                      </div>
+		      </div>
 
-                       <!-- USERS ONLINE SECTION -->
-						<h3>TEAM MEMBERS</h3>
-                      <!-- First Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-divya.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">DIVYA MANIAN</a><br/>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Second Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-sherman.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">DJ SHERMAN</a><br/>
-                      		   <muted>I am Busy</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Third Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-danro.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">DAN ROGERS</a><br/>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fourth Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-zac.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">Zac Sniders</a><br/>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
-                      <!-- Fifth Member -->
-                      <div class="desc">
-                      	<div class="thumb">
-                      		<img class="img-circle" src="assets/img/ui-sam.jpg" width="35px" height="35px" align="">
-                      	</div>
-                      	<div class="details">
-                      		<p><a href="#">Marcel Newman</a><br/>
-                      		   <muted>Available</muted>
-                      		</p>
-                      	</div>
-                      </div>
+		   </div>
+
+
 
                   </div><!-- /col-lg-3 -->
               <!-- sidebar menu end-->
