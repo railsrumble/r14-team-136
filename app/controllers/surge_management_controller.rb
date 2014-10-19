@@ -3,7 +3,7 @@ require 'rake'
 require 'migration_writer'
 
 class SurgeManagementController < ApplicationController
-  include "MigrationWriter"
+  include MigrationWriter
   layout "surge"
 
   before_action :set_folder_paths
