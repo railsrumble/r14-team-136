@@ -1,5 +1,14 @@
-<% if klass.class == String %>
+
 <div class="form-group">
+	
+	
+	<% if klass.class == Array %>
+	<% klass = klass.join("::HABTM_")  %>
+	
+	<% end %>
+		<%= klass  %>
+		
+	
 	<label class="control-label col-md-3">Rename Column<span class="required"> * </span> </label>
 	<div class="col-md-8">
 		<input type="hidden"  name= 'rename_column[table_name]' value = "<%= klass %>">
@@ -7,7 +16,8 @@
 		<%= text_field_tag 'new_column_name' %>
 		<%= submit_tag "Rename Column", :class => "btn btn-default" %>
 	</div>
+
 </div>
-<% end %>
+
 
 
