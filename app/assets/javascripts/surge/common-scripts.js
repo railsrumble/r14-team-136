@@ -130,6 +130,10 @@ var Script = function () {
      });
 
 
+ // Rumblevote url 
+    $(".rumble").attr("href", "http://railsrumble.com/?view=" +  window.location.origin);
+
+
 
   //Right form handler
 
