@@ -97,7 +97,6 @@
 								<button type="button" class="btn btn-default new_table_button ">
 									<i class="fa fa-repeat"></i> New Table &nbsp;&nbsp;
 								</button>
-
 								<button type="button" class="btn btn-default drop_table_button ">
 									<i class="fa fa-repeat"></i> Drop table &nbsp;&nbsp;
 								</button>
@@ -151,12 +150,13 @@
 										<%= render :partial => "surge_management/drop_model" , :locals => {:klass => k}%>
 									</div>
 									<hr />
-									<div class="row rename_column">
-									<%= render :partial => "surge_management/rename_column", :locals => {:klass => k}%>
+									<div class="row rename_table">
+										
+									<%= render :partial => "surge_management/rename_table", :locals => {:klass => k}%>
 									</div>
 									<hr />
-									<div class="row rename_table">
-									<%= render :partial => "surge_management/rename_table", :locals => {:klass => k}%>
+									<div class="row rename_column">
+									<%= render :partial => "surge_management/rename_column", :locals => {:klass => k}%>
 									</div>
 									<hr />
 									<p>
