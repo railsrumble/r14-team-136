@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'rake'
 
 class SurgeManagementController < ApplicationController
   layout "surge"
@@ -17,9 +18,19 @@ class SurgeManagementController < ApplicationController
 
   end
 
-  def test
-    system("rails destroy model test1 ")
-    rafeeq
+  def create_model
+    cols_string = ""
+    params[:new_model][:column_data].each do|i,col|
+      cols_string += "#{col[:column_name]}:#{col[:data_type]} "
+    end
+    system("rails generate model #{params[:new_model][:model_name]} #{cols_string}")
+    Rails.application.class.load_tasks
+    Rake::Task['db:migrate'].invoke
+    redirect_to :back
+  end
+  def drop_model
+    system("rails destroy model #{params[:model_name]}")
+    redirect_to :back
   end
 
   private
