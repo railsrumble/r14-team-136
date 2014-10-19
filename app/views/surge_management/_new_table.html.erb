@@ -1,17 +1,14 @@
+ <div class="col-md12">
+
 <h3>New Table</h3>
 <%= form_tag "/create_table" do %>
 <div id="new_table_form_body">
-	<div class="form-group">
-		<label class="control-label col-md-3">TableName<span class="required"> * </span> </label>
-		<div class="col-md-8">
+	<div class="form-group padding-10">
+		<label class="control-label ">TableName <span class="required"> * </span> </label>
+ 
 			<input type="text" class="form-control" name="new_table[table_name]" id="table_name" autocomplete="off"/>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<div class="col-md-8">
-			<label class="control-label col-md-3">ColumnName<span class="required"> * </span> </label>
-			<input type="text" class="form-control" name="new_table[column_data][0][column_name]"  autocomplete="off"/>
+			<label class="control-label">ColumnName<span class="required"> * </span> </label>
+			<input type="text" class="form-control" name="new_table[column_data][0][column_name]"  autocomplete="off"/> <br />
 			<%= select_tag "new_table[column_data][0][data_type]",
 			"<option>binary</option>
 			<option>boolean</option>
@@ -26,27 +23,31 @@
 			<option>text</option>
 			<option>time</option>
 			<option>timestamp </option>
-			".html_safe %>
-			<label class="control-label col-md-3">Limit<span class="required"> * </span> </label>
+			".html_safe  , :class => "form-control" %> <br>
+			<label class="control-label  ">Limit<span class="required"> * </span> </label>
 			<input type="text" class="form-control" name="new_table[column_data][0][limit]"  autocomplete="off"/>
-			<label class="control-label col-md-3">default<span class="required"> * </span> </label>
-			<input type="text" class="form-control" name="new_table[column_data][0][default]"  autocomplete="off"/>
-			<label class="control-label col-md-3">Null<span class="required"> * </span> </label>
+			<label class="control-label ">default<span class="required"> * </span> </label>
+			<input type="text" class="form-control" name="new_table[column_data][0][default]"  autocomplete="off"/><br >
+			<label class="control-label ">Allow Null<span class="required"> * </span> </label> <br >
 			<input type="radio" name="new_table[column_data][0][null]" value="true" checked="checked">
 			true
 			<br>
 			<input type="radio" name="new_table[column_data][0][null]" value="false">
 			false
-		</div>
+ 
 	</div>
 
 </div>
+
+<div class="form-group padding-10">
 <button type="button" class="btn btn-default add_table_column">
 	<i class="fa fa-add"></i> add column &nbsp;&nbsp;
 </button>
-<div class="form-group ">
+
 	<%= submit_tag "Create", :class => "btn btn-default" %>
 </div>
 
 <% end %>
 <input type="hidden" value="0" id="table_colums_counter" />
+
+</div>
