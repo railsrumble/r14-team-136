@@ -164,5 +164,44 @@ var Script = function () {
    	$(this).parent().parent().remove();
    });
    });
+   
+   $('.rename_table_button').click(function(){
+  	$(".without_model").hide();
+    $(".with_model").fadeIn("fast");
+  	$('.edit_form').hide();
+    $('.rename_table_form').show();
+  });
+  
+  $('.rename_column_button').click(function(){
+  	$(".without_model").hide();
+    $(".with_model").fadeIn("fast");
+  	$('.edit_form').hide();
+    $('.rename_column_form').show();
+  });
+  
+  //fetch columns of selected table name
+  	$('#table_rename_table_name').change(function(){
+		$.ajax({
+        type : "GET",
+        url : "/get_columns?table_name="+ $(this).val(),
+        dataType : "json",
+        success : function(data) {
+        	console.log(data[0])
+        	
+        	var output = [];
+
+			$.each(data, function(key,value)
+			{
+  				output.push('<option value="'+ value +'">'+ value +'</option>');
+			});
+
+			$('#old_column_name').html(output.join(''));
+	    }
+	 });
+	});
+  
+  
+  
+  
 
   }();
