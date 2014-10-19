@@ -193,7 +193,7 @@ var Script = function () {
    	var counter = $(this).parent().find(".add_column_column_count");
    	$(counter).val(parseInt($(counter).val()) + 1);
    	var count = $(counter).val();
-   	$(this).parent().append('<div class="row"><div class=""><label>Column Name </label><input type="text" class="form-control" name="add_column[' + count + '][column_name]"  /></div><div class="col-md-8"><label> Data Type</label><br/><select id="add_column_' + count + '_data_type" name="add_column[' + count + '][data_type]"><option>binary</option><option>boolean</option><option>date</option><option>datetime</option><option>decimal</option><option>float</option><option>integer</option><option>primary_key</option><option>references</option><option>string</option><option>text</option><option>time</option><option>timestamp </option></select><button type="button" class="close" >X</button></div></div>');
+   	$(this).parent().append('<div class="row"><div class=""><label>Column Name </label><input type="text" class="form-control" name="add_column[column_data][' + count + '][column_name]"  /></div><div class="col-md-8"><label> Data Type</label><br/><select id="add_column_' + count + '_data_type" name="add_column[column_data][' + count + '][data_type]"><option>binary</option><option>boolean</option><option>date</option><option>datetime</option><option>decimal</option><option>float</option><option>integer</option><option>primary_key</option><option>references</option><option>string</option><option>text</option><option>time</option><option>timestamp </option></select><button type="button" class="close" >X</button></div></div>');
     	$('.close').click(function(){
     	$(this).parent().parent().remove();
     });

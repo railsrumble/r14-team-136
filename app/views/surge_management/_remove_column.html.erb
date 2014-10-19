@@ -5,8 +5,8 @@
 	<% end %>
 		<div class="col-md-8">
 			<label>Add Column Name to Remove </label>
-			<input type="hidden" value="<%= klass %>" name="remove_column[:table_name]" />
-			<%= select_tag "column_name" , options_for_select(klass.constantize.columns.collect {|c| [c.name]})%>
+			<input type="hidden" value="<%= klass %>" name="remove_column[table_name]" />
+			<%= select_tag "remove_column[column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true%>
 			
 		</div>
 			<div class="col-md-8">

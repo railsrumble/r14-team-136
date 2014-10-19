@@ -29,14 +29,12 @@ class SurgeManagementController < ApplicationController
     end
 
     @tree.each do |node|
-        node[:children] = remove_duplicates(node[:children])
+      node[:children] = remove_duplicates(node[:children])
     end
     @tree = @tree.sort{|x,y| y[:children].count <=> x[:children].count}
 
-
     p "#"*50
     puts JSON.pretty_generate(@tree)
-
 
   end
 
@@ -55,6 +53,32 @@ class SurgeManagementController < ApplicationController
   end
 
   def generate_migrations
+    
+    
+    all_params = []
+    if params[:add_column] && params[:add_column][:column_data]
+      params[:add_column][:column_data].each do |i,cdata|
+        if cdata[:column_name]
+          add_column = {}
+          add_column[:action] = "add_column"
+          add_column[:table_name] = params[:add_column][:table_name]
+          add_column[:column_name] = cdata[:column_name]
+          add_column[:datatype] = cdata[:data_type]
+        all_params << add_column
+        end
+      end
+    end
+    if params[:remove_column] && params[:remove_column][:column_name] != ""
+      remove_column = {}
+      remove_column[:action] = "remove_column"
+      remove_column[:table_name] = params[:remove_column][:table_name]
+      remove_column[:column_name] = params[:remove_column][:column_name]
+      remove_column[:data_type] = params[:remove_column][:table_name].constantize.columns.select{|c| c.name==params[:remove_column][:column_name]}.first.type
+      all_params << remove_column
+    end
+    
+    
+    
     if params[:drop_model]
       system("rails destroy model #{params[:drop_model][:model_name]}")
     end
@@ -92,35 +116,34 @@ class SurgeManagementController < ApplicationController
 
     p ref
 
-
     if ref.blank? || repete.include?(klass)
 
-    else
+      else
 
       repete << klass
 
       ref.each do |c,rel|
-	next if rel.macro == :belongs_to
+        next if rel.macro == :belongs_to
 
-	p "#{rel.active_record} running"
+        p "#{rel.active_record} running"
 
-	begin
+        begin
 
-	  result << add_sub_class(rel.name.classify.constantize,repete)
+          result << add_sub_class(rel.name.classify.constantize,repete)
 
-	rescue Exception => e
+        rescue Exception => e
 
-	  @mtm[klass.name] ||= []
+        @mtm[klass.name] ||= []
 
-	  @mtm[klass.name] << c.to_s.classify
+          @mtm[klass.name] << c.to_s.classify
 
-	  if rel.options[:class_name]
+          if rel.options[:class_name]
 
-	    result << add_sub_class(rel.options[:class_name].to_s.constantize,repete)
+            result << add_sub_class(rel.options[:class_name].to_s.constantize,repete)
 
-	  end
+          end
 
-	end
+        end
 
       end
 
