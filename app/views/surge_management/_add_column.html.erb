@@ -2,12 +2,12 @@
 
 	<input type="hidden" value="<%= klass %>" name="add_column[:table_name]" />
 
-	<div class="col-md-3">
-		<label>Column Name </label>
+	<div class="col-md-8">
+		<label>Add newColumn Name </label>
 		<input type="text" class="form-control" name="column_name"  />
 	</div>
-	<div class="col-md-8">
-		<label> Data Type</label>
+	<div class="col-md-15">
+		<label>Add  Data Type to New Column</label>
 		<br/>
 		<%= select_tag "new_model[column_data][0][data_type]",
 		"<option>binary</option>

@@ -1,12 +1,18 @@
 <div class="form-group">
-
-
-		<div class="col-md-3">
-			<label>Column Name </label>
-			<%= select_tag "column_name", @ar_decendants.collect{|c| "<option>#{c.name}</option>"}.join.html_safe %>
+	
+		<div class="col-md-12">
+			<label>Add Column Name to Remove </label>
+			<input type="hidden" value="<%= klass %>" name="remove_column[:table_name]" />
+			<%=  "#{klass}"" %>
+			<!--<%=# select_tag  
+			a.each do |b|
+			<option>b</option>
+			end
+			%>
+			-->
 		</div>
-			<div class="col-md-8">
-				<label> Data Type</label>
+			<div class="col-md-12">
+				<label>Add  Data Type of Column to Remove</label>
 				<br/>
 				<%= select_tag "new_model[column_data][0][data_type]",
 				"<option>binary</option>
