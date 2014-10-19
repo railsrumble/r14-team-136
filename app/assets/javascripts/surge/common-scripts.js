@@ -195,42 +195,6 @@ var Script = function () {
     $('.add_column_form').show();
   });
   
-  //fetch columns of selected table name
-  	$('#change_column_table_name').change(function(){
-		$.ajax({
-        type : "GET",
-        url : "/get_columns?table_name="+ $(this).val(),
-        dataType : "json",
-        success : function(data) {
-        	
-	    }
-	 });
-	});
-	
-	 //fetch columns of selected table name
-  	$('#remove_column_table_name').change(function(){
-		$.ajax({
-        type : "GET",
-        url : "/get_columns?table_name="+ $(this).val(),
-        dataType : "json",
-        success : function(data) {
-        	
-	    }
-	 });
-	});
-  
-  $('.change_datatype_button').click(function(){
-  	$(".without_model").hide();
-    $(".with_model").fadeIn("fast");
-  	$('.edit_form').hide();
-    $('.change_datatype_form').show();
-  });
-  
-  $('.remove_column_button').click(function(){
-  	$(".without_model").hide();
-    $(".with_model").fadeIn("fast");
-  	$('.edit_form').hide();
-    $('.remove_column_form').show();
-  });
+ 
 
   }();

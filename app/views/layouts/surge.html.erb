@@ -137,14 +137,19 @@
 									<% end %>
 								</ul>
 								<% end %>
+								<div class="migratoin_form">
+									<%= render :partial => "surge_management/add_column", :locals => {:klass => k } %>
+									<%= render :partial => "surge_management/remove_column", :locals => {:klass => k }%>
+									<%= render :partial => "surge_management/change_datatype", :locals => {:klass => k}%>
+								</div>
 							</div>
 							<% end %>
 
 							<div class="edit_form new_model_form" ">
-								<%= render "surge_management/new_model"%>
+							<%= render "surge_management/new_model"%>
 							</div>
 							<div class="edit_form drop_model_form" >
-								<%= render "surge_management/drop_model"%>
+							<%= render "surge_management/drop_model"%>
 							</div>
 							<div class="edit_form new_table_form" ">
 								<%= render "surge_management/new_table"%>
@@ -152,16 +157,7 @@
 							<div class="edit_form drop_table_form" >
 								<%= render "surge_management/drop_table"%>
 							</div>
-							<div class="edit_form add_column_form" >
-								<%= render "surge_management/add_column"%>
-							</div>
-							<div class="edit_form change_datatype_form" >
-								<%= render "surge_management/change_datatype"%>
-							</div>
-							<div class="edit_form remove_column_form" >
-								<%= render "surge_management/remove_column"%>
-							</div>
-
+								
 							<div class="desc">
 								<div class="details">
 									<p></p>
