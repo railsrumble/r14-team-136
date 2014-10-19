@@ -2277,4 +2277,12 @@ font-family: courier;
     min-height: 900px;
 }
 
+.arrowsandboxes-powered-by {
+ display: none;
+
+}
+
+div.arrowsandboxes-wrapper-hovered div.arrowsandboxes-powered-by{
+ display: none;
+}
 

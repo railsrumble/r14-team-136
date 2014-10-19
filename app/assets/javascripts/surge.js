@@ -8,5 +8,7 @@
 //= require surge/jquery.scrollTo.min
 //= require surge/jquery.mousewheel
 //= require surge/jquery.panzoom
+//= require surge/jquery.wz_jsgraphics
+//= require surge/arrowsandboxes
 //= require surge/common-scripts
 

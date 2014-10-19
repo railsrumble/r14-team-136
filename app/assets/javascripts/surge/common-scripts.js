@@ -115,7 +115,7 @@ var Script = function () {
                   $zoomOut: $(".zoom-out"),
                   $zoomRange: $(".zoom-range"),
                   $reset: $(".reset"),
-		 startTransform: 'scale(0.5)'
+		 startTransform: 'scale(1)'
   });
 
   $panzoom.parent().on('mousewheel.focal', function( e ) {
@@ -123,7 +123,7 @@ var Script = function () {
     var delta = e.delta || e.originalEvent.wheelDelta;
     var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
     $panzoom.panzoom('zoom', zoomOut, {
-      increment: 0.1,
+      increment: 0.5,
       animate: false,
       focal: e
     });
@@ -180,7 +180,10 @@ var Script = function () {
 
   //Arrows and boxes
   $("li.sub-menu").click(function() {
-    $(".main_arrows_and_boxes").html($(this).find(".aab_source").val()).arrows_and_boxes();
+    $(".main_arrows_and_boxes").empty().append("<pre class='aab-updated'/>");
+    var x = $("pre.aab-updated");
+    x.html($(this).find(".aab_source").html()).arrows_and_boxes();
+    $(".main_arrows_and_boxes.arrowsandboxes-source").hide();
   });
   //Arrows and boxes
 

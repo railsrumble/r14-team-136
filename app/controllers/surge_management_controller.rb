@@ -9,13 +9,11 @@ class SurgeManagementController < ApplicationController
     @all_classes = {}
 
     Rails.application.eager_load!
-    @ar_decendants = ActiveRecord::Base.descendants
+    @ar_decendants = ActiveRecord::Base.descendants.reject{|x| x == ActiveRecord::SchemaMigration}
+    p  @ar_decendants
     @ar_decendants.each do |klass|
       @all_classes[klass.to_s.classify.split("::").join(" ").split("HABTM").sort.each{|x| x.strip!}] = klass.descendants.collect{|x| x.to_s.classify.split("::").join(" ").split("HABTM").each{|x| x.strip!} }
-    end
-
-    p @all_classes
-
+    end 
     @ar_decendants
 
     @tree = []
@@ -27,10 +25,9 @@ class SurgeManagementController < ApplicationController
       @tree << add_sub_class(k, [])
 
     end
+     
+    p @tree
 
-    @tree.each do |node|
-        node[:children] = remove_duplicates(node[:children])
-    end
     @tree = @tree.sort{|x,y| y[:children].count <=> x[:children].count}
 
 
@@ -81,44 +78,29 @@ class SurgeManagementController < ApplicationController
     end
   end
 
-  def add_sub_class(klass,repete)
+  def add_sub_class(klass,repeat)
+ 
+
 
     result = []
 
     ref = klass.reflections
 
-    p ref
+ 
 
-
-    if ref.blank? || repete.include?(klass)
+    if ref.blank? || repeat.include?(klass)
 
     else
 
-      repete << klass
-
+      repeat << klass
+	
       ref.each do |c,rel|
 	next if rel.macro == :belongs_to
 
 	p "#{rel.active_record} running"
-
-	begin
-
-	  result << add_sub_class(rel.name.classify.constantize,repete)
-
-	rescue Exception => e
-
-	  @mtm[klass.name] ||= []
-
-	  @mtm[klass.name] << c.to_s.classify
-
-	  if rel.options[:class_name]
-
-	    result << add_sub_class(rel.options[:class_name].to_s.constantize,repete)
-
-	  end
-
-	end
-
+	p rel
+	  result << add_sub_class(rel.name.to_s.classify.constantize,repeat) 
+ 
       end
 
     end
