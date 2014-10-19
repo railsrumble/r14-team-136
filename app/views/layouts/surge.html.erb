@@ -51,9 +51,9 @@
 								</li>
 								<% end %>
 							</ul> <% end %> </a>
-				<div class="aab_source" style="display: none;">
+							<div class="aab_source" style="display: none;">
 
-				</div>
+							</div>
 						</li>
 						<% end %>
 
@@ -73,9 +73,9 @@
 					<div class="row">
 						<div class="col-lg-12 main-area"  style="height: 90%">
 							<div class="panzoom" >
-										      <div class="main_arrows_and_boxes">
-		        <img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" width="900" height="900">
-		      </div>
+								<div class="main_arrows_and_boxes">
+									<img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" width="900" height="900">
+								</div>
 							</div>
 						</div><!-- /col-lg-9 END SECTION MIDDLE -->
 						<div class="bottom-zoom">
@@ -133,6 +133,8 @@
 								</ul>
 								<% end %>
 								<% klass =k.join("::HABTM_") %>
+								<% begin %>
+								<% klass.constantize %>
 								<%= form_tag "/generate_migrations" do %>
 								<div class="migratoin_form">
 									<div class="row add_column">
@@ -152,12 +154,12 @@
 									</div>
 									<hr />
 									<div class="row rename_table">
-										
-									<%= render :partial => "surge_management/rename_table", :locals => {:klass => k}%>
+
+										<%= render :partial => "surge_management/rename_table", :locals => {:klass => klass }%>
 									</div>
 									<hr />
 									<div class="row rename_column">
-									<%= render :partial => "surge_management/rename_column", :locals => {:klass => k}%>
+										<%= render :partial => "surge_management/rename_column", :locals => {:klass => klass }%>
 									</div>
 									<hr />
 									<p>
@@ -165,6 +167,8 @@
 									</p>
 
 								</div>
+								<% end %>
+								<% rescue %>
 								<% end %>
 							</div>
 							<% end %>
