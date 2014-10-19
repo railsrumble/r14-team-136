@@ -63,7 +63,7 @@ module MigrationWriter
 
     a_params.each do |param|
       if param[:action] == "drop_table"
-        File.open("db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%S")}_surge_migration_#{(Time.now+60).utc.strftime("%Y%m%d%H%M%S")}.rb", "a+") do |f|
+        File.open("tmp/#{Time.now.utc.strftime("%Y%m%d%H%M%S")}_surge_migration_#{(Time.now+60).utc.strftime("%Y%m%d%H%M%S")}.rb", "a+") do |f|
           f.write("class SurgeMigration#{(Time.now+60).utc.strftime("%Y%m%d%H%M%S")} < ActiveRecord::Migration \n")
 
           updated_file = drop_table_writer(param , f)
@@ -72,8 +72,8 @@ module MigrationWriter
         end
       end
     end
-
-    File.open("db/migrate/#{Time.now.utc.strftime("%Y%m%d%H%M%S")}_surge_migration_#{Time.now.utc.strftime("%Y%m%d%H%M%S")}.rb", "a+") do |f|
+    file = "tmp/#{Time.now.utc.strftime("%Y%m%d%H%M%S")}_surge_migration_#{Time.now.utc.strftime("%Y%m%d%H%M%S")}.rb"
+    File.open(file, "a+") do |f|
       f.write("class SurgeMigration#{Time.now.utc.strftime("%Y%m%d%H%M%S")} < ActiveRecord::Migration \n")
       f.write("   def change \n")
       b_params.each   do |param|
@@ -89,5 +89,6 @@ module MigrationWriter
       f.write("   end \n")
       f.write("end \n")
     end
+    file
   end
 end

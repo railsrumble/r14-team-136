@@ -17,3 +17,5 @@ gem 'uglifier'
 
 gem "sqlite3", :group => :development
 gem 'acts-as-taggable-on', '~> 3.4'
+
+gem "jquery-rails"

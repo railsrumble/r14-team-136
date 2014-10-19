@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 //
 //= require surge/jquery
+//= require jquery_ujs
 //= require surge/jquery-1.8.3.min
 //= require surge/bootstrap.min
 //= require surge/jquery.dcjqaccordion.2.7

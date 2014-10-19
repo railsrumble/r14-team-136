@@ -152,7 +152,7 @@
 								<% klass =k.join("::HABTM_") %>
 								<% begin %>
 								<% klass.constantize %>
-								<%= form_tag "/generate_migrations" do %>
+								<%= form_tag("/generate_migrations", :remote => true) do %>
 								<div class="migratoin_form">
 									<div class="row add_column">
 										<%= render :partial => "surge_management/add_column", :locals => {:klass => klass } %>

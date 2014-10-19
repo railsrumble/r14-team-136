@@ -5,6 +5,7 @@ require 'migration_writer'
 class SurgeManagementController < ApplicationController
   include MigrationWriter
   layout "surge"
+  skip_before_filter :verify_authenticity_token
 
   before_action :set_folder_paths
   def index
@@ -56,7 +57,6 @@ class SurgeManagementController < ApplicationController
   end
 
   def generate_migrations
-
     all_params = []
     if params[:add_column] && params[:add_column][:column_data]
       p "11111111111"
@@ -72,7 +72,6 @@ class SurgeManagementController < ApplicationController
       end
     end
     if params[:remove_column] && params[:remove_column][:column_name] != ""
-      p "2222222222222222"
       remove_column = {}
       remove_column[:action] = "remove_column"
       remove_column[:table_name] = params[:remove_column][:table_name].constantize.table_name
@@ -82,17 +81,14 @@ class SurgeManagementController < ApplicationController
     end
 
     if params[:rename_table] && params[:rename_table][:new_table_name] != ''
-      p "333333333333333"
       all_params <<  {:action => "rename_table" , :table_data => {:old_table_name => params[:rename_table][:old_table_name].constantize.table_name , :new_table_name => params[:rename_table][:new_table_name]}}
     end
 
     if params[:rename_column] && params[:rename_column][:old_column_name] != "" && params[:rename_column][:new_column_name] != ""
-      p "4444444444444444444"
       all_params << {:action => "rename_column" , :table_name => params[:rename_column][:table_name].constantize.table_name, :old_column_name => params[:rename_column][:old_column_name] ,:new_column_name => params[:rename_column][:new_column_name]}
     end
-    create_migration_file(all_params)
+    @file = create_migration_file(all_params)
     if params[:drop_model][:drop_model]
-      p "555555555555555555555"
       system("rails destroy model #{params[:drop_model][:model_name]}")
     end
     redirect_to :back
