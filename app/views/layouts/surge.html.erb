@@ -126,22 +126,23 @@
 									<% end %>
 								</ul>
 								<% end %>
-								<%= form_tag "" do %>
+								<% klass =k.join("::HABTM_") %>
+								<%= form_tag "/generate_migrations" do %>
 								<div class="migratoin_form">
 									<div class="row add_column">
-										<%= render :partial => "surge_management/add_column", :locals => {:klass => k } %>
+										<%= render :partial => "surge_management/add_column", :locals => {:klass => klass } %>
 									</div>
 									<hr />
 									<div class="row remove_column">
-										<%= render :partial => "surge_management/remove_column", :locals => {:klass => k }%>
+										<%= render :partial => "surge_management/remove_column", :locals => {:klass => klass }%>
 									</div>
 									<hr />
 									<div class="row change_datatype">
-										<%= render :partial => "surge_management/change_datatype", :locals => {:klass => k}%>
+										<%= render :partial => "surge_management/change_datatype", :locals => {:klass => klass }%>
 									</div>
 									<hr />
 									<div class="row drop_model">
-										<%= render :partial => "surge_management/drop_model" , :locals => {:klass => k}%>
+										<%= render :partial => "surge_management/drop_model" , :locals => {:klass => klass 	}%>
 									</div>
 									<hr />
 									<p>

@@ -1,15 +1,15 @@
-<div class="form-group">
+<div class="form-group add_column_form_body">
 
-	<input type="hidden" value="<%= klass %>" name="add_column[:table_name]" />
+	<input type="hidden" value="<%= klass %>" name="add_column[table_name]" />
 
 	<div class="col-md-3">
 		<label>Column Name </label>
-		<input type="text" class="form-control" name="column_name"  />
+		<input type="text" class="form-control" name="add_column[0][column_name]"  />
 	</div>
 	<div class="col-md-8">
 		<label> Data Type</label>
 		<br/>
-		<%= select_tag "new_model[column_data][0][data_type]",
+		<%= select_tag "add_column[0][data_type]",
 		"<option>binary</option>
 		<option>boolean</option>
 		<option>date</option>
@@ -25,7 +25,8 @@
 		<option>timestamp </option>
 		".html_safe %>
 	</div>
-	<input type="hidden" value="0" />
-	<button id="add_column_button"></button>
+
 </div>
+<input type="hidden" value="0" id="add_column_column_<%= klass %>_count" />
+<a href="#" id="add_column_column_<%= klass %>" class="add_column_button">add row</a>
 
