@@ -32,6 +32,11 @@ class SurgeManagementController < ApplicationController
     system("rails destroy model #{params[:model_name]}")
     redirect_to :back
   end
+  
+  def get_columns
+    p "In get_columns s\action of controller"
+    render :json => params["table_name"].constantize.columns.collect{|c| c.name}
+  end
 
   private
 

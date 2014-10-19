@@ -171,30 +171,5 @@ var Script = function () {
     $('.drop_table_form').show();
   });
   
-   $('.add_model_column').click(function(){
-   	$('#model_colums_counter').val(parseInt($('#model_colums_counter').val()) + 1);
-   	$('#new_model_form_body').append('<div class="form-group"><div class="col-md-8"><label class="control-label col-md-3">ColumnName<span class="required"> * </span> </label><input type="text"  autocomplete="off" class="form-control" name="new_model[column_data][' + $('#model_colums_counter').val() + '][column_name]"  /><select id="new_model_column_data_0_data_type" name="new_model[column_data][' + $('#model_colums_counter').val() + '][data_type]"><option>binary</option><option>boolean</option><option>date</option><option>datetime</option><option>decimal</option><option>float</option><option>integer</option><option>primary_key</option><option>references</option><option>string</option><option>text</option><option>time</option><option>timestamp </option></select><label class="control-label col-md-3">Limit<span class="required"> * </span> </label><input type="text" autocomplete="off" class="form-control" name="new_model[column_data][' + $('#model_colums_counter').val() + '][limit]"  /><label class="control-label col-md-3">default<span class="required"> * </span> </label><input type="text" autocomplete="off" class="form-control" name="new_model[column_data][' + $('#model_colums_counter').val() + '][default]"  /><label class="control-label col-md-3">Null<span class="required"> * </span> </label><input type="radio" name="new_model[column_data][' + $('#model_colums_counter').val() + '][null]" value="true" checked="checked">true<br><input type="radio" name="new_model[column_data][' + $('#model_colums_counter').val() + '][null]" value="false">false<button type="button" class="close" >X</button></div></div>');
-   	$('.close').click(function(){
-   	$(this).parent().parent().remove();
-   });
-   });
-   
-    $('.add_table_column').click(function(){
-   	$('#table_colums_counter').val(parseInt($('#table_colums_counter').val()) + 1);
-   	$('#new_table_form_body').append('<div class="form-group"><div class="col-md-8"><label class="control-label col-md-3">ColumnName<span class="required"> * </span> </label><input type="text"  autocomplete="off" class="form-control" name="new_model[column_data][' + $('#table_colums_counter').val() + '][column_name]"  /><select id="new_model_column_data_0_data_type" name="new_model[column_data][' + $('#table_colums_counter').val() + '][data_type]"><option>binary</option><option>boolean</option><option>date</option><option>datetime</option><option>decimal</option><option>float</option><option>integer</option><option>primary_key</option><option>references</option><option>string</option><option>text</option><option>time</option><option>timestamp </option></select><label class="control-label col-md-3">Limit<span class="required"> * </span> </label><input type="text" autocomplete="off" class="form-control" name="new_model[column_data][' + $('#table_colums_counter').val() + '][limit]"  /><label class="control-label col-md-3">default<span class="required"> * </span> </label><input type="text" autocomplete="off" class="form-control" name="new_model[column_data][' + $('#table_colums_counter').val() + '][default]"  /><label class="control-label col-md-3">Null<span class="required"> * </span> </label><input type="radio" name="new_model[column_data][' + $('#table_colums_counter').val() + '][null]" value="true" checked="checked">true<br><input type="radio" name="new_model[column_data][' + $('#table_colums_counter').val() + '][null]" value="false">false<button type="button" class="close" >X</button></div></div>');
-   	$('.close').click(function(){
-   	$(this).parent().parent().remove();
-   });
-   });
-   
-
-  $('.add_column_button').click(function(){
-  	$(".without_model").hide();
-    $(".with_model").fadeIn("fast");
-  	$('.edit_form').hide();
-    $('.add_column_form').show();
-  });
-  
- 
 
   }();
