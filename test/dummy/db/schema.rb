@@ -13,6 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20141019190236) do
 
+  create_table "aas", force: true do |t|
+    t.integer  "bb"
+    t.string   "cc"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -23,6 +30,14 @@ ActiveRecord::Schema.define(version: 20141019190236) do
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "notes", force: true do |t|
+    t.integer  "c1"
+    t.string   "c2"
+    t.text     "c3"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.string   "name"

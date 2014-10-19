@@ -1,5 +1,6 @@
-<% if klass.class == String %>
+
 <div class="form-group">
+	
 	<label class="control-label col-md-3">Rename Column<span class="required"> * </span> </label>
 	<div class="col-md-8">
 		<input type="hidden"  name= 'rename_column[table_name]' value = "<%= klass %>">
@@ -8,6 +9,6 @@
 		<%= submit_tag "Rename Column", :class => "btn btn-default" %>
 	</div>
 </div>
-<% end %>
+
 
 
