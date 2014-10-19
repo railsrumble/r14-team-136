@@ -5,7 +5,6 @@
 		<input type="hidden"  name= 'rename_column[table_name]' value = "<%= klass %>">
 		<%= select_tag "rename_column[old_column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true , :class => "form-control" %></br>
 		<%= text_field_tag 'rename_column[new_column_name]', nil, :class => "form-control" %><br>
-		<%= submit_tag "Rename Column", :class => "btn btn-default" %>
  
 </div>
 

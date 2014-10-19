@@ -2,11 +2,12 @@
 
 <h3>Drop Table</h3>
 <%= form_tag "/drop_table" do %>
+
 <div class="form-group padding-10">
 	<label class="control-label ">TableName<span class="required"> * </span> </label> <br>
  
 		<%= select_tag "table_name", @ar_decendants.collect{|c| "<option>#{c.name}</option>"}.join.html_safe, :class => "form-control" %> <br>
-		
+ 
   
 	<%= submit_tag "Drop", :class => "btn btn-default" %>
 </div>
