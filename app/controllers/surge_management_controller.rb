@@ -91,7 +91,7 @@ class SurgeManagementController < ApplicationController
     if params[:drop_model][:drop_model]
       system("rails destroy model #{params[:drop_model][:model_name]}")
     end
-    redirect_to :back
+
   end
 
   def get_columns
