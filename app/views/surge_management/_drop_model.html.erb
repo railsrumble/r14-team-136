@@ -1,8 +1,12 @@
-<h3>Drop Model</h3>
+<b>Drop Model</b>
 <div class="form-group">
-	<label class="control-label col-md-3">ModelName<span class="required"> * </span> </label>
-	<div class="col-md-8">
-		<%= select_tag "model_name", @ar_decendants.collect{|c| "<option>#{c.name}</option>"}.join.html_safe %>
-		
+	<div class="row">
+		<input type="hidden" value="<%= klass %>" name="drop_model[model_name]" />
+	</div>
+	<div class="row">
+		<input type="checkbox" name="drop_model[model_name]" value="true" /> Drop Model
 	</div>
 </div>
+
+
+
