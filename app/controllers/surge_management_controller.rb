@@ -48,8 +48,8 @@ class SurgeManagementController < ApplicationController
         cols_string += "#{col[:column_name]}:#{col[:data_type]} "
       end
       system("rails generate model #{params[:new_model][:model_name]} #{cols_string}")
-      Rails.application.class.load_tasks
-      Rake::Task['db:migrate'].invoke
+      #Rails.application.class.load_tasks
+      #Rake::Task['db:migrate'].invoke
     end
     redirect_to :back
   end
@@ -79,6 +79,15 @@ class SurgeManagementController < ApplicationController
       all_params << remove_column
     end
     
+    if params[:rename_table] && params[:rename_table][:new_table_name] != ''
+      all_params <<  {:action => "rename_table" , :table_data => {:old_table_name => params[:rename_table][:old_table_name] , :new_table_name => params[:rename_table][:new_table_name]}}
+    end
+    
+    if params[:rename_column] && params[:rename_column][:old_column_name] != "" && params[:rename_column][:new_column_name] != ""
+      all_params << {:action => "rename_column" , :table_name => params[:rename_column][:table_name], :old_column_name => params[:rename_column][:old_column_name] ,:new_column_name => params[:rename_column][:new_column_name]}
+    end
+    
+    rafeeq
     create_migration_file(all_params)
     
     if params[:drop_model]

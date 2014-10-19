@@ -4,8 +4,8 @@
 	<label class="control-label col-md-3">Rename Column<span class="required"> * </span> </label>
 	<div class="col-md-8">
 		<input type="hidden"  name= 'rename_column[table_name]' value = "<%= klass %>">
-		<%= select_tag "old_column_name" , options_for_select(klass.constantize.columns.collect {|c| [c.name]})%></br>
-		<%= text_field_tag 'new_column_name' %>
+		<%= select_tag "rename_column[old_column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true%></br>
+		<%= text_field_tag 'rename_column[new_column_name]' %>
 		<%= submit_tag "Rename Column", :class => "btn btn-default" %>
 	</div>
 </div>
