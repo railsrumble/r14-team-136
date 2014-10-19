@@ -1,9 +1,9 @@
 require 'fileutils'
+
 class SurgeManagementController < ApplicationController
   layout "surge"
 
   before_action :set_folder_paths
-
   def index
     @all_classes = {}
 
@@ -17,24 +17,29 @@ class SurgeManagementController < ApplicationController
 
   end
 
+  def test
+    system("rails destroy model test1 ")
+    rafeeq
+  end
+
   private
 
   def set_folder_paths
     #if Rails.env.production?
-      if File.directory?(Rails.root.to_s + "/tmp/#{request.session_options[:id]}")
-	p "Exists"
-      else
-	p Rails.root.to_s + "/tmp/#{request.session_options[:id]}" + " Does not exists"
-	p "creating folder"
-	FileUtils::mkdir_p Rails.root.to_s + "/tmp/#{request.session_options[:id]}/models"
-	FileUtils::mkdir_p Rails.root.to_s + "/tmp/#{request.session_options[:id]}/migrate"
-        p File.directory?(Rails.root.to_s + "/tmp/#{request.session_options[:id]}")
-	FileUtils.cp_r Rails.root.to_s + "/app/models",  Rails.root.to_s + "/tmp/#{request.session_options[:id]}/models"
-	FileUtils.cp_r Rails.root.to_s + "/db/migrate",  Rails.root.to_s + "/tmp/#{request.session_options[:id]}/migrate"
+    if File.directory?(Rails.root.to_s + "/tmp/#{request.session_options[:id]}")
+      p "Exists"
+    else
+      p Rails.root.to_s + "/tmp/#{request.session_options[:id]}" + " Does not exists"
+      p "creating folder"
+      FileUtils::mkdir_p Rails.root.to_s + "/tmp/#{request.session_options[:id]}/models"
+      FileUtils::mkdir_p Rails.root.to_s + "/tmp/#{request.session_options[:id]}/migrate"
+      p File.directory?(Rails.root.to_s + "/tmp/#{request.session_options[:id]}")
+      FileUtils.cp_r Rails.root.to_s + "/app/models",  Rails.root.to_s + "/tmp/#{request.session_options[:id]}/models"
+      FileUtils.cp_r Rails.root.to_s + "/db/migrate",  Rails.root.to_s + "/tmp/#{request.session_options[:id]}/migrate"
 
-      end
-    #else
+    end
+  #else
 
-    #end
+  #end
   end
 end
