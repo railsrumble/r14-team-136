@@ -149,10 +149,7 @@
 										<%= render :partial => "surge_management/change_datatype", :locals => {:klass => klass }%>
 									</div>
 									<hr />
-									<div class="row drop_model">
-										<%= render :partial => "surge_management/drop_model" , :locals => {:klass => klass 	}%>
-									</div>
-									<hr />
+
 									<div class="row rename_table">
 
 										<%= render :partial => "surge_management/rename_table", :locals => {:klass => klass }%>
@@ -160,6 +157,10 @@
 									<hr />
 									<div class="row rename_column">
 										<%= render :partial => "surge_management/rename_column", :locals => {:klass => klass }%>
+									</div>
+									<hr />
+									<div class="row drop_model">
+										<%= render :partial => "surge_management/drop_model" , :locals => {:klass => klass 	}%>
 									</div>
 									<hr />
 									<p>
