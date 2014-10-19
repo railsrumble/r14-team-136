@@ -129,6 +129,8 @@
 									<%= render :partial => "surge_management/add_column", :locals => {:klass => k } %>
 									<%= render :partial => "surge_management/remove_column", :locals => {:klass => k }%>
 									<%= render :partial => "surge_management/change_datatype", :locals => {:klass => k}%>
+									<%= render :partial => "surge_management/rename_table", :locals => {:klass => k}%>
+									<%= render :partial => "surge_management/rename_column", :locals => {:klass => k}%>
 								</div>
 							</div>
 							<% end %>

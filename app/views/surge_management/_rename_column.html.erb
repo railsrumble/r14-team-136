@@ -1,15 +1,13 @@
-<%= form_tag "/rename_column" do %>
+<% if klass.class == String %>
 <div class="form-group">
-	<label class="control-label col-md-3">TableName<span class="required"> * </span> </label>
+	<label class="control-label col-md-3">Rename Column<span class="required"> * </span> </label>
 	<div class="col-md-8">
-		<%= select_tag "table_rename[table_name]", @ar_decendants.collect{|c| "<option>#{c.name}</option>"}.join.html_safe %></br>
-		<%= select_tag "old_column_name" %></br>
+		<input type="hidden"  name= 'rename_column[table_name]' value = "<%= klass %>">
+		<%= select_tag "old_column_name" , options_for_select(klass.constantize.columns.collect {|c| [c.name]})%></br>
 		<%= text_field_tag 'new_column_name' %>
-		
+		<%= submit_tag "Rename Column", :class => "btn btn-default" %>
 	</div>
 </div>
-<div class="form-group ">
-	<%= submit_tag "Change", :class => "btn btn-default" %>
-</div>
-
 <% end %>
+
+

@@ -1,14 +1,8 @@
-<%= form_tag "/rename_table" do %>
 <div class="form-group">
-	<label class="control-label col-md-3">TableName<span class="required"> * </span> </label>
+	<label class="control-label col-md-3">Rename Table<span class="required"> * </span> </label>
 	<div class="col-md-8">
-		<%= select_tag "old_table_name", @ar_decendants.collect{|c| "<option>#{c.name}</option>"}.join.html_safe %>
-		<%= text_field_tag 'new_table_name' %>
-		
+		<input type="hidden"  name= 'rename_table[old_table_name]' value = "<%= klass %>">
+		New table name<%= text_field_tag 'rename_table[new_table_name]' %>
+		<%= submit_tag "Rename Table", :class => "btn btn-default" %>
 	</div>
 </div>
-<div class="form-group ">
-	<%= submit_tag "Change", :class => "btn btn-default" %>
-</div>
-
-<% end %>
