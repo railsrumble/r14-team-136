@@ -1,5 +1,8 @@
 <div class="form-group">
-
+<% if klass.class == Array %>
+	<% klass = klass.join("::HABTM_")  %>
+	
+	<% end %>
 		<div class="col-md-18">
 			<label>Add Column Name to change Data type </label>
 			<input type="hidden" value="<%= klass %>" name="change_datatype[:table_name]" />

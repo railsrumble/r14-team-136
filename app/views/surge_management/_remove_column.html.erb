@@ -1,5 +1,8 @@
 <div class="form-group">
+	<% if klass.class == Array %>
+	<% klass = klass.join("::HABTM_")  %>
 	
+	<% end %>
 		<div class="col-md-8">
 			<label>Add Column Name to Remove </label>
 			<input type="hidden" value="<%= klass %>" name="remove_column[:table_name]" />
