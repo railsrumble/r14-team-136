@@ -4,7 +4,7 @@
 	
 	<% end %>
 		<div class="col-md-12">
-			<label>Add Column Name to Remove </label>
+			<label>Select column to remove </label>
 			<input type="hidden" value="<%= klass %>" name="remove_column[table_name]" />
 			<%= select_tag "remove_column[column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true , :class => "form-control" %>
 			
