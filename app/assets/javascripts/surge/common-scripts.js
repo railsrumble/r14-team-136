@@ -157,9 +157,7 @@ var Script = function () {
     $('.drop_model_form').show();
   });
   
-  $('#add_column_button').click(function(){
-  	
-  });
+  
   
   
   $('.new_table_button').click(function(){
