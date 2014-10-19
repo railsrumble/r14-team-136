@@ -51,6 +51,17 @@
 								</li>
 								<% end %>
 							</ul> <% end %> </a>
+
+				<div class="aab_source" style="display: none;">
+					<% @tree.each_with_index do |node, index| %>
+ 					  <% p node[:base_class] %>
+					 <% p k[0] %>
+				          <% if node[:base_class] == k[0] %>
+					   <%= add_tree(node) %> 
+					<% end %>
+
+				        <% end %>
+				</div>
 							<div class="aab_source" style="display: none;">
 
 							</div>
@@ -71,11 +82,13 @@
 				<section class="wrapper">
 
 					<div class="row">
-						<div class="col-lg-12 main-area"  style="height: 90%">
+						<div class="col-lg-12 main-area"  style="height: 800px;">
 							<div class="panzoom" >
-								<div class="main_arrows_and_boxes">
-									<img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" width="900" height="900">
-								</div>
+
+										      <div class="main_arrows_and_boxes"> 
+		      </div>
+
+
 							</div>
 						</div><!-- /col-lg-9 END SECTION MIDDLE -->
 						<div class="bottom-zoom">

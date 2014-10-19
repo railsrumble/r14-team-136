@@ -6,6 +6,7 @@
 *= require surge/bootstrap
 *= require surge/font-awesome
 *= require surge/li_style
+*= require surge/arrowsandboxes
 *= require surge/style
 *= require surge/style-responsive
 */

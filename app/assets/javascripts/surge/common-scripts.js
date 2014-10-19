@@ -115,7 +115,7 @@ var Script = function () {
                   $zoomOut: $(".zoom-out"),
                   $zoomRange: $(".zoom-range"),
                   $reset: $(".reset"),
-		 startTransform: 'scale(0.5)'
+		 startTransform: 'scale(1)'
   });
 
   $panzoom.parent().on('mousewheel.focal', function( e ) {
@@ -123,7 +123,7 @@ var Script = function () {
     var delta = e.delta || e.originalEvent.wheelDelta;
     var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
     $panzoom.panzoom('zoom', zoomOut, {
-      increment: 0.1,
+      increment: 0.5,
       animate: false,
       focal: e
     });
@@ -173,6 +173,8 @@ var Script = function () {
   	$('.edit_form').hide();
     $('.drop_table_form').show();
   });
+
+
      $('.add_model_column').click(function(){
    	$('#model_colums_counter').val(parseInt($('#model_colums_counter').val()) + 1);
    	$('#new_model_form_body').append('<div class="form-group"><div class="col-md-8"><label class="control-label col-md-3">ColumnName<span class="required"> * </span> </label><input type="text"  autocomplete="off" class="form-control" name="new_model[column_data][' + $('#model_colums_counter').val() + '][column_name]"  /><select id="new_model_column_data_0_data_type" name="new_model[column_data][' + $('#model_colums_counter').val() + '][data_type]"><option>binary</option><option>boolean</option><option>date</option><option>datetime</option><option>decimal</option><option>float</option><option>integer</option><option>primary_key</option><option>references</option><option>string</option><option>text</option><option>time</option><option>timestamp </option></select><button type="button" class="close" >X</button></div></div>');
@@ -201,9 +203,14 @@ var Script = function () {
 
 
 
+
+
   //Arrows and boxes
   $("li.sub-menu").click(function() {
-    $(".main_arrows_and_boxes").html($(this).find(".aab_source").val()).arrows_and_boxes();
+    $(".main_arrows_and_boxes").empty().append("<pre class='aab-updated'/>");
+    var x = $("pre.aab-updated");
+    x.html($(this).find(".aab_source").html()).arrows_and_boxes();
+    $(".main_arrows_and_boxes.arrowsandboxes-source").hide();
   });
   //Arrows and boxes
 
