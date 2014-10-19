@@ -174,4 +174,13 @@ var Script = function () {
   });
   
 
+
+
+  //Arrows and boxes
+  $("li.sub-menu").click(function() {
+    $(".main_arrows_and_boxes").html($(this).find(".aab_source").val()).arrows_and_boxes();
+  });
+  //Arrows and boxes
+
+
   }();
