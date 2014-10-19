@@ -88,12 +88,15 @@
 								<button type="button" class="btn btn-default new_model_button ">
 									<i class="fa fa-repeat"></i> New Model &nbsp;&nbsp;
 								</button>
-								<button type="button" class="btn btn-default drop_model_button ">
-									<i class="fa fa-repeat"></i> Drop Model &nbsp;&nbsp;
-								</button>
 								<button type="button" class="btn btn-default new_table_button ">
 									<i class="fa fa-repeat"></i> New Table &nbsp;&nbsp;
 								</button>
+<<<<<<< HEAD
+=======
+								<button type="button" class="btn btn-default drop_table_button ">
+									<i class="fa fa-repeat"></i> Drop table &nbsp;&nbsp;
+								</button>
+>>>>>>> 4c0fe5f3809633124101bb0ef7548e8f8983a63d
 
 							</div>
 						</div>
@@ -106,6 +109,7 @@
 			<aside>
 				<div id="sidebar"  class="nav-collapse right">
 					<div class="ds">
+
 						<div class="with_model" style="display: none;">
 
 							<% @all_classes.each do |k,v| %>
@@ -125,21 +129,43 @@
 									<% end %>
 								</ul>
 								<% end %>
+								<%= form_tag "" do %>
 								<div class="migratoin_form">
-									<%= render :partial => "surge_management/add_column", :locals => {:klass => k } %>
-									<%= render :partial => "surge_management/remove_column", :locals => {:klass => k }%>
-									<%= render :partial => "surge_management/change_datatype", :locals => {:klass => k}%>
-									<%= render :partial => "surge_management/rename_table", :locals => {:klass => k}%>
+									<div class="row add_column">
+										<%= render :partial => "surge_management/add_column", :locals => {:klass => k } %>
+									</div>
+									<hr />
+									<div class="row remove_column">
+										<%= render :partial => "surge_management/remove_column", :locals => {:klass => k }%>
+									</div>
+									<hr />
+									<div class="row change_datatype">
+										<%= render :partial => "surge_management/change_datatype", :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<div class="row drop_model">
+										<%= render :partial => "surge_management/drop_model" , :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<div class="row rename_column">
 									<%= render :partial => "surge_management/rename_column", :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<div class="row rename_table">
+									<%= render :partial => "surge_management/rename_table", :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<p>
+										<%= submit_tag %>
+									</p>
+
 								</div>
+								<% end %>
 							</div>
 							<% end %>
 
 							<div class="edit_form new_model_form" ">
 							<%= render "surge_management/new_model"%>
-							</div>
-							<div class="edit_form drop_model_form" >
-							<%= render "surge_management/drop_model"%>
 							</div>
 							<div class="edit_form new_table_form" ">
 								<%= render "surge_management/new_table"%>
@@ -149,11 +175,12 @@
 							</div>
 							<div class="desc">
 								<div class="details">
-									<p></p>
+
 								</div>
 							</div>
 
 						</div>
+
 						<div class="without_model" style="display: block;">
 							<!--COMPLETED ACTIONS DONUTS CHART-->
 							<h3>No Model Selected</h3>
