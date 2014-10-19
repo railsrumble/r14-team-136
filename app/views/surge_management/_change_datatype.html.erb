@@ -1,16 +1,20 @@
 <div class="form-group">
+
 <% if klass.class == Array %>
+
 	<% klass = klass.join("::HABTM_")  %>
 	
 	<% end %>
-		<div class="col-md-18">
+<div class=" padding-10">
+		<div class="col-md-12">
 			<label>Add Column Name to change Data type </label>
 			<input type="hidden" value="<%= klass %>" name="change_datatype[:table_name]" />
-			<%= select_tag "column_name" , options_for_select(klass.constantize.columns.collect {|c| [c.name]})%>
+			<%= select_tag "column_name" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}) , :class => "form-control"%>
 		</div>
-			<div class="col-md-8">
+ 
+			<div class="col-md-12 margin-top-5">
 				<label>Add new Data Type</label>
-				<br/>
+		 
 				<%= select_tag "new_model[column_data][0][data_type]",
 				"<option>binary</option>
 				<option>boolean</option>
@@ -25,7 +29,7 @@
 				<option>text</option>
 				<option>time</option>
 				<option>timestamp </option>
-				".html_safe %>
+				".html_safe , :class => "form-control" %>
 			</div>
 </div>			
-		
+		</div>	

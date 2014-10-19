@@ -1,12 +1,12 @@
-<div class="form-group">
+<div class="form-group padding-10">
 	<% if klass.class == Array %>
 	<% klass = klass.join("::HABTM_")  %>
 	
 	<% end %>
-		<div class="col-md-8">
+		<div class="col-md-12">
 			<label>Add Column Name to Remove </label>
 			<input type="hidden" value="<%= klass %>" name="remove_column[table_name]" />
-			<%= select_tag "remove_column[column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true %>
+			<%= select_tag "remove_column[column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true , :class => "form-control" %>
 			
 		</div>
 			

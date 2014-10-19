@@ -135,8 +135,7 @@
 
 							<% @all_classes.each do |k,v| %>
 							<div class="edit_form <%= k.object_id %>">
-								<h3><%= (k)[0] + " " + (k)[1].to_s %></h3>
-								<span><%= (k)[0] + " " + (k)[1].to_s %></span>
+								<h3><%= (k)[0] + " " + (k)[1].to_s %></h3> 
 								<% unless (k)[1].blank? %>
 								<span class="label label-default sti">H A B T M</span>
 								<% end %>

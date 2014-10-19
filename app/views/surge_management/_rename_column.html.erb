@@ -1,14 +1,12 @@
-
-<div class="form-group">
-	
-	<label class="control-label col-md-3">Rename Column<span class="required"> * </span> </label>
-	<div class="col-md-8">
+ <div class="col-md-12">
+<div class="form-group padding-10">
+	<label class="control-label ">Rename Column </label>
+ 
 		<input type="hidden"  name= 'rename_column[table_name]' value = "<%= klass %>">
-		<%= select_tag "rename_column[old_column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true%></br>
-		<%= text_field_tag 'rename_column[new_column_name]' %>
+		<%= select_tag "rename_column[old_column_name]" , options_for_select(klass.constantize.columns.collect {|c| [c.name]}), include_blank: true , :class => "form-control" %></br>
+		<%= text_field_tag 'rename_column[new_column_name]', nil, :class => "form-control" %><br>
 		<%= submit_tag "Rename Column", :class => "btn btn-default" %>
-	</div>
+ 
 </div>
 
-
-
+</div>
