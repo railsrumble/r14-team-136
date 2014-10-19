@@ -1,0 +1,8 @@
+<div class="form-group">
+	<label class="control-label col-md-3">Rename Table<span class="required"> * </span> </label>
+	<div class="col-md-8">
+		<input type="hidden"  name= 'rename_table[old_table_name]' value = "<%= klass %>">
+		New table name<%= text_field_tag 'rename_table[new_table_name]' %>
+		<%= submit_tag "Rename Table", :class => "btn btn-default" %>
+	</div>
+</div>

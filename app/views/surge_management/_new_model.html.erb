@@ -1,0 +1,52 @@
+<h3>New Model</h3>
+<%= form_tag "/create_model" do %>
+<div id="new_model_form_body">
+	<div class="form-group">
+		<label class="control-label col-md-3">Model Name<span class="required"> * </span> </label>
+		<div class="col-md-8">
+			<input type="text" class="form-control" name="new_model[model_name]" id="model_name" autocomplete="off"/>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-8">
+			<label class="control-label col-md-3">ColumnName<span class="required"> * </span> </label>
+			<input type="text" class="form-control" name="new_model[column_data][0][column_name]"  autocomplete="off"/>
+			<%= select_tag "new_model[column_data][0][data_type]",
+			"<option>binary</option>
+			<option>boolean</option>
+			<option>date</option>
+			<option>datetime</option>
+			<option>decimal</option>
+			<option>float</option>
+			<option>integer</option>
+			<option>primary_key</option>
+			<option>references</option>
+			<option>string</option>
+			<option>text</option>
+			<option>time</option>
+			<option>timestamp </option>
+			".html_safe %>
+			<label class="control-label col-md-3">Limit<span class="required"> * </span> </label>
+			<input type="text" class="form-control" name="new_model[column_data][0][limit]"  autocomplete="off"/>
+			<label class="control-label col-md-3">default<span class="required"> * </span> </label>
+			<input type="text" class="form-control" name="new_model[column_data][0][default]"  autocomplete="off"/>
+			<label class="control-label col-md-3">Null<span class="required"> * </span> </label>
+			<input type="radio" name="new_model[column_data][0][null]" value="true" checked="checked">
+			true
+			<br>
+			<input type="radio" name="new_model[column_data][0][null]" value="false" autocomplete="off" />
+			false
+		</div>
+	</div>
+
+</div>
+<button type="button" class="btn btn-default add_model_column">
+	<i class="fa fa-add"></i> add column &nbsp;&nbsp;
+</button>
+<div class="form-group ">
+	<%= submit_tag "Create", :class => "btn btn-default" %>
+</div>
+
+<% end %>
+<input type="hidden" value="0" id="model_colums_counter" />

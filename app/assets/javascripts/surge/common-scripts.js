@@ -106,8 +106,8 @@ var Script = function () {
       $(this).find(".value").html("");
       $(this).find(".value").animate({
 	height: i
-      }, 2000)
-    })
+      }, 2000);
+    });
   }
 
   var $panzoom = $('.panzoom').panzoom({
@@ -137,9 +137,44 @@ var Script = function () {
     $(".without_model").hide();
     $(".with_model").fadeIn("fast");
     obj_id = parseInt($(this).find("a").first().attr("class").replace(/active/gi, ""));
-    console.log(obj_id);
+    $('.edit_form').hide();
+    $('.' + obj_id).show();
 
   });
+  
+  $('.edit_form').hide();
+  $('.new_model_button').click(function(){
+  	$(".without_model").hide();
+    $(".with_model").fadeIn("fast");
+  	$('.edit_form').hide();
+    $('.new_model_form').show();
+  });
+  
+  $('.drop_model_button').click(function(){
+  	$(".without_model").hide();
+    $(".with_model").fadeIn("fast");
+  	$('.edit_form').hide();
+    $('.drop_model_form').show();
+  });
+  
+  $('#add_column_button').click(function(){
+  	
+  });
+  
+  
+  $('.new_table_button').click(function(){
+  	$(".without_model").hide();
+    $(".with_model").fadeIn("fast");
+  	$('.edit_form').hide();
+    $('.new_table_form').show();
+  });
+  $('.drop_table_button').click(function(){
+  	$(".without_model").hide();
+    $(".with_model").fadeIn("fast");
+  	$('.edit_form').hide();
+    $('.drop_table_form').show();
+  });
+  
 
 
 

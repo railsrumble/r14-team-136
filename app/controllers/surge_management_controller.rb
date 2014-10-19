@@ -1,9 +1,10 @@
 require 'fileutils'
+require 'rake'
+
 class SurgeManagementController < ApplicationController
   layout "surge"
 
   before_action :set_folder_paths
-
   def index
     @all_classes = {}
 
@@ -39,6 +40,29 @@ class SurgeManagementController < ApplicationController
 
   end
 
+  def create_model
+    cols_string = ""
+    params[:new_model][:column_data].each do|i,col|
+      cols_string += "#{col[:column_name]}:#{col[:data_type]} "
+    end
+    system("rails generate model #{params[:new_model][:model_name]} #{cols_string}")
+    Rails.application.class.load_tasks
+    Rake::Task['db:migrate'].invoke
+    redirect_to :back
+  end
+  def drop_model
+    system("rails destroy model #{params[:model_name]}")
+    redirect_to :back
+  end
+  
+  def generate_migrations
+    rafeeq
+  end
+  def get_columns
+    p "In get_columns s\action of controller"
+    render :json => params["table_name"].constantize.columns.collect{|c| c.name}
+  end
+
   private
 
   def set_folder_paths
@@ -55,9 +79,15 @@ class SurgeManagementController < ApplicationController
       FileUtils.cp_r Rails.root.to_s + "/db/migrate",  Rails.root.to_s + "/tmp/#{request.session_options[:id]}/migrate"
 
     end
+<<<<<<< HEAD
     #else
 
     #end
+=======
+  #else
+
+  #end
+>>>>>>> 1d7b537f0a796ea644367e233a6d76fa0e0d91cf
   end
 
   def add_sub_class(klass,repete)

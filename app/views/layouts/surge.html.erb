@@ -1,160 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Surge</title>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <%= stylesheet_link_tag    'surge', media: 'all' %>
+		<title>Surge</title>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+		<%= stylesheet_link_tag    'surge', media: 'all' %>
 
-  <body>
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
 
-  <section id="container" >
-      <!-- **********************************************************************************************************************************************************
-      TOP BAR CONTENT & NOTIFICATIONS
-      *********************************************************************************************************************************************************** -->
-      <!--header start-->
-      <header class="header black-bg">
-          <%= image_tag "surge/logo.png", :style => "height: 50px;text-align: center;margin: 0px auto;display: block;" %>
-      </header>
-      <!--header end-->
+	<body>
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN SIDEBAR MENU
-      *********************************************************************************************************************************************************** -->
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu left" id="nav-accordion">
+		<section id="container" >
+			<!-- **********************************************************************************************************************************************************
+			TOP BAR CONTENT & NOTIFICATIONS
+			*********************************************************************************************************************************************************** -->
+			<!--header start-->
+			<header class="header black-bg">
+				<%= image_tag "surge/logo.png", :style => "height: 50px;text-align: center;margin: 0px auto;display: block;" %>
+			</header>
+			<!--header end-->
 
+			<!-- **********************************************************************************************************************************************************
+			MAIN SIDEBAR MENU
+			*********************************************************************************************************************************************************** -->
+			<!--sidebar start-->
+			<aside>
+				<div id="sidebar"  class="nav-collapse ">
+					<!-- sidebar menu start-->
+					<ul class="sidebar-menu left" id="nav-accordion">
 
-		  <h5 class="centered">Models</h5>
+						<h5 class="centered">Models</h5>
 
-		  <br />
-		  <% @all_classes.each do |k,v| %>
-		  <li class="sub-menu">
-		  <a class="<%= k.object_id %>" href="#">
-			<span><%= (k)[0] + " " + (k)[1].to_s %></span>
-			<% unless (k)[1].blank? %>
-			<span class="label label-default sti">H A B T M</span>
-			<% end %>
-			<% unless v.blank? %>
-			  <span class="label label-warning sti">S T I</span>
-			  <ul class="sub">
-			    <% v.each do |s| %>
-			      <li><a  href="#"><%= (s)[0]  %></a></li>
-			    <% end %>
-			  </ul>
-			<% end %>
-		      </a>
-		      <text
-			</li>
-			<div class="aab_source" style="display: none;">
+						<br />
+						<% @all_classes.each do |k,v| %>
+						<li class="sub-menu">
+							<a class="<%= k.object_id %>" href="#"> <span><%= (k)[0] + " " + (k)[1].to_s %></span> <% unless (k)[1].blank? %> <span class="label label-default sti">H A B T M</span> <% end %>
+							<% unless v.blank? %> <span class="label label-warning sti">S T I</span>
+							<ul class="sub">
+								<% v.each do |s| %>
+								<li>
+									<a  href="#"><%= (s)[0]  %></a>
+								</li>
+								<% end %>
+							</ul> <% end %> </a>
+				<div class="aab_source" style="display: none;">
 
-			</div>
-		  <% end %>
+				</div>
+						</li>
+						<% end %>
 
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
+					</ul>
+					<!-- sidebar menu end-->
+				</div>
+			</aside>
+			<!--sidebar end-->
 
-      <!-- **********************************************************************************************************************************************************
-      MAIN CONTENT
-      *********************************************************************************************************************************************************** -->
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
+			<!-- **********************************************************************************************************************************************************
+			MAIN CONTENT
+			*********************************************************************************************************************************************************** -->
+			<!--main content start-->
+			<section id="main-content">
+				<section class="wrapper">
 
-              <div class="row">
-                  <div class="col-lg-12 main-area"  style="height: 90%">
-		    <div class="panzoom" >
-		      <div class="main_arrows_and_boxes">
+					<div class="row">
+						<div class="col-lg-12 main-area"  style="height: 90%">
+							<div class="panzoom" >
+										      <div class="main_arrows_and_boxes">
 		        <img src="http://blog.millermedeiros.com/wp-content/uploads/2010/04/awesome_tiger.svg" width="900" height="900">
 		      </div>
-		    </div>
-		  </div><!-- /col-lg-9 END SECTION MIDDLE -->
- 		  <div class="bottom-zoom">
-		    <div class="showback" style="margin: 0px;">
-		      <input type="range" class="zoom-range"><br>
-		      <button type="button" class="btn btn-theme02 zoom-in"><i class="fa fa-plus-square-o"></i>  &nbsp;&nbsp; Zoomin &nbsp;&nbsp;</button>
-		      <button type="button" class="btn btn-theme02 zoom-out"><i class="fa fa-minus-square-o"></i>  &nbsp;&nbsp; Zoomout &nbsp;&nbsp;</button>
-		      <button type="button" class="btn btn-default reset"><i class="fa fa-repeat"></i>  &nbsp;&nbsp; Reset &nbsp;&nbsp;</button>
-		    </div>
-	        </div>
-      	     </div><! --/row -->
-          </section>
-      </section>
+							</div>
+						</div><!-- /col-lg-9 END SECTION MIDDLE -->
+						<div class="bottom-zoom">
+							<div class="showback" style="margin: 0px;">
+								<input type="range" class="zoom-range">
+								<br>
+								<button type="button" class="btn btn-theme02 zoom-in">
+									<i class="fa fa-plus-square-o"></i> &nbsp;&nbsp; Zoomin &nbsp;&nbsp;
+								</button>
+								<button type="button" class="btn btn-theme02 zoom-out">
+									<i class="fa fa-minus-square-o"></i> &nbsp;&nbsp; Zoomout &nbsp;&nbsp;
+								</button>
+								<button type="button" class="btn btn-default reset">
+									<i class="fa fa-repeat"></i> &nbsp;&nbsp; Reset &nbsp;&nbsp;
+								</button>
+								<button type="button" class="btn btn-default new_model_button ">
+									<i class="fa fa-repeat"></i> New Model &nbsp;&nbsp;
+								</button>
+								<button type="button" class="btn btn-default new_table_button ">
+									<i class="fa fa-repeat"></i> New Table &nbsp;&nbsp;
+								</button>
 
-      <!--right sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse right">
-	    <div class="ds">
-	           <div class="with_model" style="display: none;">
+								<button type="button" class="btn btn-default drop_table_button ">
+									<i class="fa fa-repeat"></i> Drop table &nbsp;&nbsp;
+								</button>
 
-	 	<% @all_classes.each do |k,v| %>
-		  <div class="edit_form <%= k.object_id %>">
-		     <h3><%= (k)[0] + " " + (k)[1].to_s %></h3>
-			<span><%= (k)[0] + " " + (k)[1].to_s %></span>
-			<% unless (k)[1].blank? %>
-			<span class="label label-default sti">H A B T M</span>
-			<% end %>
-			<% unless v.blank? %>
-			  <span class="label label-warning sti">S T I</span>
-			  <ul class="sub">
-			    <% v.each do |s| %>
-			      <li><a  href="#"><%= (s)[0]  %></a></li>
-			    <% end %>
-			  </ul>
-			<% end %>
-		      </div>
-		  <% end %>
+							</div>
+						</div>
+					</div>
+					<! --/row -->
+				</section>
+			</section>
 
+			<!--right sidebar start-->
+			<aside>
+				<div id="sidebar"  class="nav-collapse right">
+					<div class="ds">
 
-                      <div class="desc">
-                      	<div class="details">
-                          <p>
-                      	  </p>
-                      	</div>
-		      </div>
+						<div class="with_model" style="display: none;">
 
-		   </div>
-		  <div class="without_model" style="display: block;">
-                    <!--COMPLETED ACTIONS DONUTS CHART-->
-						<h3>No Model Selected</h3>
+							<% @all_classes.each do |k,v| %>
+							<div class="edit_form <%= k.object_id %>">
+								<h3><%= (k)[0] + " " + (k)[1].to_s %></h3>
+								<span><%= (k)[0] + " " + (k)[1].to_s %></span>
+								<% unless (k)[1].blank? %>
+								<span class="label label-default sti">H A B T M</span>
+								<% end %>
+								<% unless v.blank? %>
+								<span class="label label-warning sti">S T I</span>
+								<ul class="sub">
+									<% v.each do |s| %>
+									<li>
+										<a  href="#"><%= (s)[0]  %></a>
+									</li>
+									<% end %>
+								</ul>
+								<% end %>
+								<%= form_tag "" do %>
+								<div class="migratoin_form">
+									<div class="row add_column">
+										<%= render :partial => "surge_management/add_column", :locals => {:klass => k } %>
+									</div>
+									<hr />
+									<div class="row remove_column">
+										<%= render :partial => "surge_management/remove_column", :locals => {:klass => k }%>
+									</div>
+									<hr />
+									<div class="row change_datatype">
+										<%= render :partial => "surge_management/change_datatype", :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<div class="row drop_model">
+										<%= render :partial => "surge_management/drop_model" , :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<div class="row rename_column">
+									<%= render :partial => "surge_management/rename_column", :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<div class="row rename_table">
+									<%= render :partial => "surge_management/rename_table", :locals => {:klass => k}%>
+									</div>
+									<hr />
+									<p>
+										<%= submit_tag %>
+									</p>
 
-                      <!-- First Action -->
-                      <div class="desc">
-                      	<div class="details">
-			  <p style="text-align: center;">Please choose a model from the left tab to start editing
-                          </p>
-                      	</div>
-		      </div>
+								</div>
+								<% end %>
+							</div>
+							<% end %>
 
-		   </div>
+							<div class="edit_form new_model_form" ">
+							<%= render "surge_management/new_model"%>
+							</div>
+							<div class="edit_form new_table_form" ">
+								<%= render "surge_management/new_table"%>
+							</div>
+							<div class="edit_form drop_table_form" >
+								<%= render "surge_management/drop_table"%>
+							</div>
+							<div class="desc">
+								<div class="details">
 
+								</div>
+							</div>
 
+						</div>
 
-                  </div><!-- /col-lg-3 -->
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
-      <!--main content end-->
+						<div class="without_model" style="display: block;">
+							<!--COMPLETED ACTIONS DONUTS CHART-->
+							<h3>No Model Selected</h3>
 
-  </section>
+							<!-- First Action -->
+							<div class="desc">
+								<div class="details">
+									<p style="text-align: center;">
+										Please choose a model from the left tab to start editing
+									</p>
+								</div>
+							</div>
 
-    <!-- js placed at the end of the document so the pages load faster -->
-    <%= javascript_include_tag 'surge' %>
-  </body>
+						</div>
+
+					</div><!-- /col-lg-3 -->
+					<!-- sidebar menu end-->
+				</div>
+			</aside>
+			<!--sidebar end-->
+			<!--main content end-->
+
+		</section>
+
+		<!-- js placed at the end of the document so the pages load faster -->
+		<%= javascript_include_tag 'surge' %>
+	</body>
 </html>
